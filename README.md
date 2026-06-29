@@ -34,8 +34,8 @@ This codespace is already configured with the required tools to complete this tu
 
 ## Prerequisites
 
-- [Azure Storage Emulator (Azurite)](https://learn.microsoft.com/azure/storage/common/storage-use-azurite) - Required for local development with Azure Functions
-- [PowerShell 7.4](https://learn.microsoft.com/powershell/scripting/install/installing-powershell)
+- [Azure Storage Emulator (Azurite)](https://learn.microsoft.com/azure/storage/common/storage-use-azurite) - Required for local development with Azure Functions. Install via the VS Code [Azurite extension](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite), `npm install -g azurite`, or run the [Docker image](https://hub.docker.com/_/microsoft-azure-storage-azurite)
+- [PowerShell 7.4](https://learn.microsoft.com/powershell/scripting/install/installing-powershell) and the matching [.NET 8 runtime](https://dotnet.microsoft.com/download/dotnet/8.0) (the [Azure Functions PowerShell worker](https://learn.microsoft.com/azure/azure-functions/functions-reference-powershell#powershell-versions) is currently pinned to PowerShell 7.4 on .NET 8 LTS — without the .NET 8 runtime on PATH, `func start` fails with `Microsoft.NETCore.App, version '8.0.0' (x64) was not found`)
 - [Azure Functions Core Tools](https://learn.microsoft.com/azure/azure-functions/functions-run-local?pivots=programming-language-powershell#install-the-azure-functions-core-tools)
 - [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd)
 - To use Visual Studio Code to run and debug locally:
@@ -83,7 +83,13 @@ The `TIMER_SCHEDULE` setting defines when your timer function runs using NCRONTA
 
 ## Run your app from the terminal
 
-1. Start Azurite storage emulator in a separate terminal window:
+1. Start the Azurite storage emulator in a separate terminal window. Use whichever install option you set up in the prerequisites — for example, the `npm` package:
+
+   ```shell
+   azurite
+   ```
+
+   Or, if you installed Docker, run the Azurite container:
 
    ```shell
    docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 mcr.microsoft.com/azure-storage/azurite
