@@ -1,0 +1,10 @@
+# This descriptor drives template package creation in the packaging pipeline.
+schemaVersion: 1
+identity: Azure.Functions.Templates.TimerPowerShell
+description: Create a PowerShell Azure Functions app for Timer Trigger, with Bicep infrastructure for deployment using azd.
+projects:
+- name: Azure Functions Timer Trigger (PowerShell)
+  shortName: functions-quickstart-powershell-timer
+  root: .
+  stack: powershell
+  language: PowerShell
